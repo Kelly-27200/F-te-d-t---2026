@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La fête d'été — ProgressionLIVE</title>
+    <script>
+    // Désactive le remplacement emoji de WordPress
+    window._wpemojiSettings = null;
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.wpEmojiLoad) window.wpEmojiLoad = function(){};
+    });
+  </script>
+  <style>
+    /* Force les emojis à s'afficher en texte natif, pas en images WordPress */
+    img.emoji { display: none !important; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep: #0e2e1a;
+      --green-mid: #1a4a28;
+      --green-soft: #2d6e42;
+      --green-pale: #d6ead9;
+      --green-lightest: #f0f7f1;
+      --gold: #c9a84c;
+      --gold-light: #f5e9c8;
+      --text-dark: #111;
+      --text-mid: #3a3a3a;
+      --text-muted: #6a7a6c;
+      --white: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    .content-inner { max-width: 860px; margin: 0 auto; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--green-lightest);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /*  HERO  */
+    .hero {
+      background: var(--green-deep);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(45,110,66,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 0.45rem 1.2rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--green-pale);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-date-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      animation: fadeUp 0.7s 0.3s ease both;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .date-chip {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 0.9rem 1.6rem;
+      text-align: center;
+    }
+
+    .date-chip .chip-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .date-chip .chip-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+    }
+
+    .dot-sep { color: rgba(255,255,255,0.2); font-size: 1.5rem; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: fadeUp 1s 0.8s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /*  SECTIONS  */
+    .content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 400;
+      color: var(--green-deep);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /*  INFOS SECTION  */
+    .infos-block {
+      background: var(--green-deep);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      color: var(--white);
+    }
+
+    .infos-block .section-label { color: var(--gold); }
+    .infos-block .section-title { color: var(--white); margin-bottom: 1.5rem; }
+
+    .infos-rows { display: flex; flex-direction: column; gap: 0; }
+
+    .infos-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0 1.1rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-left: 2px solid rgba(201,168,76,0.35);
+    }
+
+    .infos-row:last-child { border-bottom: none; }
+
+    .infos-emoji { font-size: 1.3rem; margin-top: 0.1rem; flex-shrink: 0; }
+
+    .infos-info { flex: 1; }
+    .infos-info strong { display: block; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.25rem; }
+    .infos-info span { font-size: 1rem; color: var(--white); line-height: 1.5; }
+    .infos-info span em { font-style: normal; color: rgba(255,255,255,0.55); font-size: 0.88rem; }
+
+    /*  HORAIRE  */
+    .horaire-block {
+      background: var(--white);
+      border: 1px solid #ddeadf;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .horaire-rows { display: flex; flex-direction: column; gap: 0; margin-top: 0.5rem; }
+
+    .horaire-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #edf4ee;
+    }
+
+    .horaire-row:last-child { border-bottom: none; }
+
+    .horaire-time {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--green-deep);
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+
+    .horaire-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-soft);
+      flex-shrink: 0;
+    }
+
+    .horaire-dot.gold { background: var(--gold); }
+
+    .horaire-label {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.45;
+    }
+
+    .horaire-label strong { color: var(--green-deep); font-weight: 500; }
+    .horaire-label.soiree { color: #8a6a00; }
+    .horaire-label.soiree strong { color: #5a3e00; }
+
+    /*  REPAS  */
+    .repas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 520px) { .repas-grid { grid-template-columns: 1fr; } }
+
+    .repas-card {
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .repas-card.fourni {
+      background: var(--green-pale);
+      border: 1px solid #b5d8ba;
+    }
+
+    .repas-card.apporter {
+      background: var(--gold-light);
+      border: 1px solid #e0c97a;
+    }
+
+    .repas-card .rc-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .repas-card .rc-title { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .repas-card.fourni .rc-title { color: #2d6e42; }
+    .repas-card.apporter .rc-title { color: #8a6a00; }
+    .repas-card .rc-body { font-size: 0.9rem; line-height: 1.6; }
+    .repas-card.fourni .rc-body { color: #1a4a28; }
+    .repas-card.apporter .rc-body { color: #5a4400; }
+
+    /*  TRAITEUR  */
+    .traiteur-block {
+      background: var(--white);
+      border: 1px solid #ddeadf;
+      border-radius: 20px;
+      padding: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .traiteur-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .traiteur-icon { font-size: 2rem; flex-shrink: 0; }
+
+    .traiteur-label { font-size: 1rem; font-weight: 500; color: var(--green-deep); }
+    .traiteur-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    .traiteur-badge {
+      margin-left: auto;
+      background: var(--green-pale);
+      color: var(--green-soft);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+    }
+
+    .traiteur-menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .menu-item {
+      background: var(--green-lightest);
+      border: 1px solid #ddeadf;
+      border-radius: 10px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+    }
+
+    .menu-item .menu-sub {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .menu-item.menu-placeholder {
+      border-style: dashed;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .traiteur-subnote {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: var(--green-lightest);
+      border: 1px solid #ddeadf;
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      line-height: 1.55;
+    }
+
+    .traiteur-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding-top: 1rem;
+      border-top: 1px solid #ddeadf;
+      line-height: 1.5;
+    }
+
+    .ft-section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    /*  BOISSONS  */
+    .boissons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 520px) { .boissons-grid { grid-template-columns: 1fr; } }
+
+    .boisson-card {
+      border-radius: 16px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .boisson-card.fourni {
+      background: var(--green-pale);
+      border: 1px solid #b5d8ba;
+    }
+
+    .boisson-card.alcool {
+      background: #fff8ec;
+      border: 2px solid var(--gold);
+    }
+
+    .bc-top-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #4a3000;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+
+    .bc-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .bc-title { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .boisson-card.fourni .bc-title { color: #2d6e42; }
+    .boisson-card.alcool .bc-title { color: #8a6a00; }
+    .bc-body { font-size: 0.88rem; line-height: 1.6; }
+    .boisson-card.fourni .bc-body { color: #1a4a28; }
+    .boisson-card.alcool .bc-body { color: #5a4400; }
+    .boisson-card.alcool .bc-body strong { color: #3a2800; }
+
+    /* Alcool warning banner */
+    .alcool-banner {
+      background: #3a1a00;
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 1.4rem 1.75rem;
+      margin-bottom: 4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .alcool-banner-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    .alcool-banner-body { flex: 1; }
+    .alcool-banner-body strong {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .alcool-banner-body p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.55;
+    }
+    .alcool-banner-body p b {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /*  APPORTER  */
+    .apporter-block {
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, #fff9ee 0%, #fff3d6 100%);
+      border: 1px solid #f0d88a;
+    }
+
+    .apporter-block .section-label { color: #8a6a00; }
+    .apporter-block .section-title { color: var(--green-deep); margin-bottom: 1.25rem; }
+
+    .apporter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .apporter-item {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid #e8d090;
+      border-radius: 14px;
+      padding: 1.1rem 1rem;
+      text-align: center;
+    }
+
+    .apporter-item .ai-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .apporter-item .ai-title { font-size: 0.9rem; font-weight: 500; color: var(--green-deep); margin-bottom: 0.25rem; }
+    .apporter-item .ai-note { font-size: 0.75rem; color: #7a6020; line-height: 1.4; }
+
+    /*  RÈGLEMENTS  */
+    .reglements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 4rem;
+    }
+
+    .regle-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      background: var(--white);
+      border: 1px solid #ddeadf;
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    .regle-item .ri-icon { flex-shrink: 0; font-size: 1rem; margin-top: 0.05rem; }
+
+    .regle-item.alert {
+      background: #fff5f5;
+      border-color: #f0b8b8;
+      color: #6b2020;
+    }
+
+    /*  CONTACT  */
+    .contact-block {
+      background: var(--white);
+      border: 1px solid #ddeadf;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--green-deep);
+      flex-shrink: 0;
+    }
+
+    .contact-info { flex: 1; }
+    .contact-info .ci-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.2rem; }
+    .contact-info .ci-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--green-deep); margin-bottom: 0.25rem; }
+    .contact-info .ci-role { font-size: 0.85rem; color: var(--text-muted); }
+
+    .contact-tel a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-deep);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .contact-tel a:hover { background: var(--green-soft); }
+
+    /*  FOOTER  */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid #ddeadf;
+    }
+
+    footer strong { color: var(--green-deep); font-weight: 500; }
+
+    /*  ANIMATIONS HERO  */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+
+    /*  ANIMATIONS AU DÉFILEMENT  */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-group .reveal:nth-child(1) { transition-delay: 0s; }
+    .reveal-group .reveal:nth-child(2) { transition-delay: 0.09s; }
+    .reveal-group .reveal:nth-child(3) { transition-delay: 0.18s; }
+    .reveal-group .reveal:nth-child(4) { transition-delay: 0.27s; }
+    .reveal-group .reveal:nth-child(5) { transition-delay: 0.36s; }
+    .reveal-group .reveal:nth-child(6) { transition-delay: 0.45s; }
+
+    /*  RESPONSIVE MOBILE  */
+    @media (max-width: 600px) {
+
+      /* Hero */
+      .hero { padding: 2rem 1.25rem 5rem; min-height: 100svh; }
+      .hero-badge { font-size: 0.62rem; padding: 0.4rem 0.9rem; letter-spacing: 0.1em; }
+      .hero h1 { font-size: 2.6rem; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 2rem; }
+      .hero-date-row { gap: 0.6rem; }
+      .dot-sep { display: none; }
+      .date-chip { padding: 0.65rem 1rem; border-radius: 10px; }
+      .date-chip .chip-label { font-size: 0.58rem; }
+      .date-chip .chip-value { font-size: 1.05rem; }
+
+      /* Content spacing */
+      .content { padding: 3rem 1.1rem; }
+      .section-title { font-size: 1.5rem; margin-bottom: 1.25rem; }
+
+      /* Infos block */
+      .infos-block { padding: 1.5rem 1.1rem; border-radius: 16px; margin-bottom: 2.5rem; }
+      .infos-info span { font-size: 0.95rem; }
+
+      /* Horaire */
+      .horaire-block { padding: 1.5rem 1.1rem; border-radius: 16px; margin-bottom: 2.5rem; }
+      .horaire-time { font-size: 1rem; min-width: 72px; }
+      .horaire-label { font-size: 0.85rem; }
+
+      /* Traiteur */
+      .traiteur-block { padding: 1.25rem; border-radius: 16px; }
+      .traiteur-header { gap: 0.75rem; }
+      .traiteur-icon { font-size: 1.5rem; }
+      .traiteur-label { font-size: 0.9rem; }
+      .traiteur-badge { font-size: 0.62rem; padding: 0.25rem 0.7rem; }
+      .traiteur-menu { grid-template-columns: 1fr; gap: 0.4rem; }
+      .menu-item { font-size: 0.85rem; padding: 0.55rem 0.8rem; }
+
+      /* Boissons */
+      .boissons-grid { grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+      .boisson-card { padding: 1.25rem; }
+      .alcool-banner { padding: 1.1rem; border-radius: 14px; margin-bottom: 2.5rem; }
+
+      /* Quoi apporter — 2 colonnes sur mobile */
+      .apporter-block { padding: 1.5rem 1.1rem; border-radius: 16px; margin-bottom: 2.5rem; }
+      .apporter-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .apporter-item { padding: 0.9rem 0.7rem; border-radius: 12px; }
+      .apporter-item .ai-icon { font-size: 1.5rem; }
+      .apporter-item .ai-title { font-size: 0.82rem; }
+      .apporter-item .ai-note { font-size: 0.7rem; }
+
+      /* Règlements */
+      .reglements-list { margin-bottom: 2.5rem; }
+      .regle-item { font-size: 0.85rem; padding: 0.8rem 0.9rem; border-radius: 10px; }
+
+      /* Contact */
+      .contact-block { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 1.5rem; border-radius: 16px; }
+      .contact-tel a { width: 100%; justify-content: center; }
+
+      /* Footer */
+      footer { padding: 2rem 1.25rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-badge">ProgressionLIVE — Famille & équipe bienvenues</span>
+    <h1>La fête d'été<br><em>à l'Île St-Quentin</em></h1>
+    <p class="hero-sub">Employés, conjoint(e)s et enfants — tout le monde est invité pour une journée de plaisir au bord de l'eau.</p>
+    <div class="hero-date-row">
+      <div class="date-chip">
+        <span class="chip-label">Date</span>
+        <span class="chip-value">16 août 2026</span>
+      </div>
+      <span class="dot-sep">·</span>
+      <div class="date-chip">
+        <span class="chip-label">Début</span>
+        <span class="chip-value">10 h 00</span>
+      </div>
+      <span class="dot-sep">·</span>
+      <div class="date-chip">
+        <span class="chip-label">Fin officielle</span>
+        <span class="chip-value">17 h 00</span>
+      </div>
+      <span class="dot-sep">·</span>
+      <div class="date-chip" style="border-color: rgba(201,168,76,0.35); background: rgba(201,168,76,0.08);">
+        <span class="chip-label" style="color: rgba(201,168,76,0.7);">Préau jusqu'à</span>
+        <span class="chip-value" style="color: var(--gold);">22 h 00 </span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Défiler</span>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- CE QUE VOUS DEVEZ SAVOIR -->
+    <div class="section-label reveal">Informations pratiques</div>
+    <h2 class="section-title reveal">Ce que vous devez savoir</h2>
+
+    <div class="infos-block reveal">
+      <div class="section-label">À l'accueil</div>
+      <div class="infos-rows reveal-group">
+        <div class="infos-row reveal">
+          <span class="infos-emoji">🎟️</span>
+          <div class="infos-info">
+            <strong>Entrée &amp; Stationnement — Gratuits</strong>
+            <span>Vous devez mentionner les informations suivantes à l’accueil :</span>
+          </div>
+        </div>
+        <div class="infos-row reveal">
+          <span class="infos-emoji">🏕️</span>
+          <div class="infos-info">
+            <strong>Nom du préau</strong>
+            <span>Le préau du St-Maurice</span>
+          </div>
+        </div>
+        <div class="infos-row reveal">
+          <span class="infos-emoji">🏢</span>
+          <div class="infos-info">
+            <strong>Réservation au nom de</strong>
+            <span>ProgressionLIVE</span>
+          </div>
+        </div>
+
+        <div class="infos-row reveal">
+          <span class="infos-emoji">🗺️</span>
+          <div class="infos-info">
+            <strong>Lieu</strong>
+            <span>Île St-Quentin, Trois-Rivières</span>
+          </div>
+        </div>
+        <div class="infos-row reveal">
+          <span class="infos-emoji">👟</span>
+          <div class="infos-info">
+            <strong>Tenue</strong>
+            <span>Décontractée — on est dehors toute la journée</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORAIRE -->
+    <div class="section-label reveal">Déroulement</div>
+    <h2 class="section-title reveal">Horaire de la journée</h2>
+
+    <div class="horaire-block reveal">
+      <div class="horaire-rows reveal-group">
+        <div class="horaire-row reveal">
+          <span class="horaire-time">10 h 00</span>
+          <div class="horaire-dot"></div>
+          <div class="horaire-label"><strong>Ouverture des portes</strong></div>
+        </div>
+        <div class="horaire-row reveal">
+          <span class="horaire-time">12 h 00</span>
+          <div class="horaire-dot"></div>
+          <div class="horaire-label"><strong>Dîner</strong> — food truck sur place</div>
+        </div>
+        <div class="horaire-row reveal">
+          <span class="horaire-time">Après-midi</span>
+          <div class="horaire-dot"></div>
+          <div class="horaire-label">Activités libres — baignade, plage, volleyball</div>
+        </div>
+        <div class="horaire-row reveal">
+          <span class="horaire-time">17 h 00</span>
+          <div class="horaire-dot"></div>
+          <div class="horaire-label"><strong>Fin officielle</strong> de l'événement</div>
+        </div>
+        <div class="horaire-row reveal">
+          <span class="horaire-time">22 h 00</span>
+          <div class="horaire-dot gold"></div>
+          <div class="horaire-label soiree"><strong>Le préau reste disponible</strong> 🌙 — la soirée est à vous </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPAS & BOISSONS -->
+    <div class="section-label reveal">Repas &amp; Boissons</div>
+    <h2 class="section-title">On s’occupe du dîner 🚚</h2>
+
+    <!-- FOOD TRUCK -->
+    <div class="traiteur-block reveal">
+      <div class="traiteur-header">
+        <span class="traiteur-icon">🚚</span>
+        <div>
+          <div class="traiteur-label">Food truck sur place</div>
+          <div class="traiteur-sub">Un repas par personne, inclus — servi le midi</div>
+        </div>
+        <span class="traiteur-badge">Inclus</span>
+      </div>
+
+      <div class="ft-section-label">Repas principal — selon votre sélection</div>
+      <div class="traiteur-menu">
+        <div class="menu-item"> 🍟 Poutine<br><span class="menu-sub">Sauce b.b.q. et fromage en grain</span></div>
+        <div class="menu-item"> 🍔 Cheeseburger + frites<br><span class="menu-sub">Bœuf, cheddar, laitue, tomates</span></div>
+        <div class="menu-item"> 🥩 Le Kit Sandwich<br><span class="menu-sub">Sandwich au smoked meat + frites</span></div>
+      </div>
+      <div class="traiteur-subnote">Votre repas a été sélectionné lors de votre inscription. Si vous n’avez pas fait de choix et que vous ne nous avez pas mentionné que vous apportiez votre lunch, une poutine vous sera réservée.</div>
+
+      <div class="ft-section-label" style="margin-top: 1.25rem;">Accompagnements supplémentaires</div>
+      <div class="traiteur-menu">
+        <div class="menu-item"> Légumes</div>
+        <div class="menu-item"> Salades</div>
+      </div>
+
+      <div class="ft-section-label" style="margin-top: 1.25rem;">Enfants</div>
+      <div class="traiteur-menu">
+        <div class="menu-item">🍗 Doigts de poulet &amp; frites</div>
+      </div>
+
+      <div class="traiteur-note">Vous apportez votre propre lunch ? Aucun problème, faites comme il vous convient !</div>
+    </div>
+
+    <!-- BOISSONS FOURNIES -->
+    <div class="boissons-grid reveal-group">
+      <div class="boisson-card fourni reveal">
+        
+        <div class="bc-icon">🧃</div>
+        <div class="bc-title">Collations &amp; boissons fournies</div>
+        <div class="bc-body">Boissons gazeuses, eau pétillante et collations disponibles pour tous, toute la journée.</div>
+      </div>
+      <div class="boisson-card alcool reveal">
+        <div class="bc-top-badge">Non fourni</div>
+        <div class="bc-icon">🍺</div>
+        <div class="bc-title">Alcool</div>
+        <div class="bc-body">Nous ne fournissons <strong>aucun alcool</strong>. Vous êtes libres d'en apporter.</div>
+      </div>
+    </div>
+
+    <!-- ALCOOL BANNER -->
+    <div class="alcool-banner reveal">
+      
+      <span class="alcool-banner-icon">🚫</span>
+      <div class="alcool-banner-body">
+        <strong>Important — Contenants</strong>
+        <p><b>Aucun contenant en verre n'est autorisé sur le site.</b> Si vous apportez de l'alcool, prévoyez uniquement des <b>canettes ou des contenants en plastique</b> — sans exception.</p>
+      </div>
+    </div>
+
+    <!-- QUOI APPORTER -->
+    <div class="apporter-block reveal">
+      <div class="section-label">Check-list</div>
+      <h2 class="section-title">Quoi apporter ☀️</h2>
+      <div class="apporter-grid reveal-group">
+        <div class="apporter-item reveal">
+          <div class="ai-icon">🍺</div>
+          <div class="ai-title">Votre alcool</div>
+          <div class="ai-note">Si vous désirez consommer de l’alcool, apportez le vôtre. Canettes ou plastique seulement — <strong>aucun verre.</strong></div>
+        </div>
+        <div class="apporter-item reveal">
+          <div class="ai-icon">🧴</div>
+          <div class="ai-title">Crème solaire</div>
+          <div class="ai-note">Priorité no 1 — il va faire beau et chaud !</div>
+        </div>
+        <div class="apporter-item reveal">
+          <div class="ai-icon">🏊</div>
+          <div class="ai-title">Maillot de bain</div>
+          <div class="ai-note">La baignade est disponible pour ceux qui le souhaitent. Nous aurons aussi des jeux de société !</div>
+        </div>
+        <div class="apporter-item reveal">
+          <div class="ai-icon">🏖️</div>
+          <div class="ai-title">Serviette de plage</div>
+          <div class="ai-note">Pour se sécher et s’installer confortablement.</div>
+        </div>
+        <div class="apporter-item reveal">
+          <div class="ai-icon">🪑</div>
+          <div class="ai-title">Chaise de plage ou de camping</div>
+          <div class="ai-note">Tables à pique-nique sur place, mais si vous voulez un endroit plus confortable, apportez votre chaise.</div>
+        </div>
+        <div class="apporter-item reveal">
+          <div class="ai-icon">💧</div>
+          <div class="ai-title">Bouteille d’eau</div>
+          <div class="ai-note">Restez bien hydraté(e) tout au long de la journée.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RÈGLEMENTS -->
+    <div class="section-label reveal">À noter</div>
+    <h2 class="section-title reveal">Animaux &amp; règles du site</h2>
+
+    <div class="reglements-list reveal-group">
+      <div class="regle-item alert reveal">
+        <span class="ri-icon">🐾</span>
+        <span>Les animaux de compagnie ne sont <strong>pas autorisés</strong> sur le site.</span>
+      </div>
+      <div class="regle-item alert reveal">
+        <span class="ri-icon">🚭</span>
+        <span>Il est interdit de fumer ou de vapoter près des zones de baignade, de la plage, des aires de jeux et des bâtiments.</span>
+      </div>
+      <div class="regle-item reveal">
+        <span class="ri-icon">🏊️</span>
+        <span>La baignade est permise uniquement dans la zone balisée et surveillée, en présence d'un sauveteur.</span>
+      </div>
+      <div class="regle-item reveal">
+        <span class="ri-icon">👶</span>
+        <span>Les enfants de moins de 7 ans doivent être accompagnés d'un adulte en tout temps lors de la baignade. Les 7-11 ans doivent être avec une personne de 12 ans ou plus.</span>
+      </div>
+      <div class="regle-item reveal">
+        <span class="ri-icon">🦆</span>
+        <span>Il est interdit de nourrir ou de harceler les animaux présents sur le site, y compris les oiseaux.</span>
+      </div>
+      <div class="regle-item reveal">
+        <span class="ri-icon">🪨</span>
+        <span>Ne pas déplacer les roches aux abords de la plage afin de prévenir l'érosion.</span>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section-label reveal">Une question ?</div>
+    <h2 class="section-title reveal">Contactez-nous</h2>
+
+    <div class="contact-block reveal">
+      <div class="contact-avatar">K</div>
+      <div class="contact-info">
+        <div class="ci-label">Personne-ressource</div>
+        <div class="ci-name">Kelly</div>
+        <div class="ci-role">Pour toute question concernant l'événement</div>
+      </div>
+      <div class="contact-tel">
+        <a href="tel:+14505595443">📱 450-559-5443</a>
+      </div>
+    </div>
+
+  </main>
+  <footer>
+    <strong>ProgressionLIVE</strong> — La fête d'été · 16 août 2026 · Île St-Quentin<br>
+    <span style="margin-top:0.4rem; display:block;">Employés, conjoint(e)s & enfants bienvenus · Ne pas diffuser publiquement</span>
+  </footer>
+
+
+  <script>
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+          observer.observe(el);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
